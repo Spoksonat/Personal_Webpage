@@ -54,12 +54,12 @@ body{
 .Foto{
 	width: 50%;
 	margin-bottom: 20vh;
-	margin-top: -410vh;
+	margin-top: -510vh;
 }
 
 .Contenido{
 	width: 80%;
-	height: 500vh;
+	height: 600vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -136,7 +136,7 @@ body{
 .Titulo2{
 	font-size: 350%;
 	color: #000000;
-	margin-top: 10vh;
+	margin-top: 5vh;
 	margin-bottom:10vh;
 }
 
@@ -225,4 +225,258 @@ body{
 
 #intereses4{
 	width: 100%;
+}
+
+#publicaciones{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	font-family: 'EB Garamond', serif;
+}
+
+.links{
+	text-decoration: none;
+}
+
+@media (max-width: 1450px) {
+	.Menu{
+		font-size: 120%;
+	}
+	
+	.Titulo{
+		font-size: 330%;
+	}
+
+	.Titulo2{
+		font-size: 330%;
+	}
+	
+	.Texto{
+		font-size: 180%;
+	}
+
+	.Fechas{
+		font-size: 110%;
+	}
+
+	.Texto2{
+		font-size: 110%;
+	}
+
+	.Texto3{
+		font-size: 130%;
+	}
+	
+	#nombre{
+		font-size: 330%;
+	}
+
+	#ocupacion{
+		font-size: 180%;
+	}
+
+	.Ocupacion2{
+		font-size: 180%;
+	}
+}
+
+@media (max-width: 1280px) {
+	.Menu{
+		font-size: 110%;
+	}
+	
+	.Titulo{
+		font-size: 320%;
+	}
+
+	.Titulo2{
+		font-size: 320%;
+	}
+	
+	.Texto{
+		font-size: 170%;
+	}
+
+	.Fechas{
+		font-size: 100%;
+	}
+
+	.Texto2{
+		font-size: 100%;
+	}
+
+	.Texto3{
+		font-size: 120%;
+	}
+	
+	#nombre{
+		font-size: 320%;
+	}
+
+	#ocupacion{
+		font-size: 170%;
+	}
+
+	.Ocupacion2{
+		font-size: 170%;
+	}
+}
+
+@media (max-width: 1200px) {
+	.Menu{
+		font-size: 100%;
+	}
+	
+	.Titulo{
+		font-size: 310%;
+	}
+
+	.Titulo2{
+		font-size: 310%;
+	}
+	
+	.Texto{
+		font-size: 160%;
+	}
+
+	.Fechas{
+		font-size: 90%;
+	}
+
+	.Texto2{
+		font-size: 90%;
+	}
+
+	.Texto3{
+		font-size: 110%;
+	}
+	
+	#nombre{
+		font-size: 310%;
+	}
+
+	#ocupacion{
+		font-size: 170%;
+	}
+
+	.Ocupacion2{
+		font-size: 170%;
+	}
+}
+
+@media (max-width: 1130px) {
+	.Menu{
+		font-size: 90%;
+	}
+	
+	.Titulo{
+		font-size: 300%;
+	}
+
+	.Titulo2{
+		font-size: 300%;
+	}
+	
+	.Texto{
+		font-size: 150%;
+	}
+
+	.Fechas{
+		font-size: 80%;
+	}
+
+	.Texto2{
+		font-size: 80%;
+	}
+
+	.Texto3{
+		font-size: 100%;
+	}
+	
+	#nombre{
+		font-size: 320%;
+	}
+
+	#ocupacion{
+		font-size: 170%;
+	}
+
+	.Ocupacion2{
+		font-size: 170%;
+	}
+}
+
+@media (max-width: 1080px) {
+	body{
+    	flex-direction: column;
+	}
+	
+	.Menu_lateral{
+		position: fixed;
+		width: 100%;
+		padding-top: 5vh;
+		padding-bottom: 5vh;
+		margin-top: -2vh;
+		margin-bottom: 2vh;
+		align-content: center;
+		justify-content: center;
+	}
+	
+	.Opciones_Menu{
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+	}
+	
+	.Foto{
+		display: none;
+	}
+	
+	.Contenido{
+		margin: 0 auto;
+	}
+	
+	.Menu{
+		font-size: 80%;
+		margin: 0 auto;
+	}
+	
+	.Titulo{
+		font-size: 290%;
+	}
+
+	.Titulo2{
+		font-size: 290%;
+	}
+	
+	.Texto{
+		font-size: 140%;
+	}
+
+	.Fechas{
+		font-size: 70%;
+	}
+
+	.Texto2{
+		font-size: 70%;
+	}
+
+	.Texto3{
+		font-size: 90%;
+	}
+	
+	#nombre{
+		font-size: 320%;
+	}
+
+	#ocupacion{
+		font-size: 170%;
+	}
+
+	.Ocupacion2{
+		font-size: 170%;
+	}
 }
