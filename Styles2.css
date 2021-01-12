@@ -18,6 +18,12 @@ body{
 	height: 100%;
 }
 
+.linea{
+	width: 80%;
+	height:0.2%; 
+	border-width:0; 
+	background-color:rgba(0,0,0,0.1)
+}
 
 .Menu_lateral{
 	position: fixed;
@@ -47,8 +53,7 @@ body{
 	color: rgba(255,255,255,0.40);
 	font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
 	font-size: 140%;
-	margin-top: -10%;
-	margin-bottom: -10%;
+	margin-top: -20%;
 	text-decoration: none;
 }
 .Menu:hover{
@@ -57,7 +62,7 @@ body{
 
 .Foto{
 	width: 50%;
-	margin-bottom: 40%;/*20vh;*/
+	margin-bottom: 60%;/*20vh;*/
 	margin-top: -510vh;
 }
 
@@ -330,11 +335,10 @@ body{
 	
 	.Menu_lateral{
 		position: fixed;
-		width: 100%;
-		padding-top: 5vh;
-		padding-bottom: 5vh;
+		width: 105%;
+		padding-top: 3vh;
+		padding-bottom: 3vh;
 		margin-top: -2vh;
-		margin-bottom: 2vh;
 		align-content: center;
 		justify-content: center;
 	}
@@ -353,22 +357,23 @@ body{
 	
 	.Contenido{
 		margin: 0 auto;
+		margin-top: 8%;
 		width: 95%;
 	}
 	
 	.Menu{
-		font-size: 100%;
+		font-size: 90%;
 		margin: 0 auto;
 	}
 	
 	.Titulo{
-		font-size: 320%;
+		font-size: 310%;
 		margin-top: 18vh;
 	}
 
 	.Titulo2{
-		font-size: 320%;
-		margin-top: 13vh;
+		font-size: 310%;
+		margin-top: 18vh;
 	}
 	
 	.Texto{
@@ -408,11 +413,10 @@ body{
 	
 	.Menu_lateral{
 		position: fixed;
-		width: 100%;
-		padding-top: 5vh;
-		padding-bottom: 5vh;
+		width: 105%;
+		padding-top: 3vh;
+		padding-bottom: 3vh;
 		margin-top: -2vh;
-		margin-bottom: 2vh;
 		align-content: center;
 		justify-content: center;
 	}
@@ -431,22 +435,23 @@ body{
 	
 	.Contenido{
 		margin: 0 auto;
+		margin-top: 8%;
 		width: 95%;
 	}
 	
 	.Menu{
-		font-size: 90%;
+		font-size: 80%;
 		margin: 0 auto;
 	}
 	
 	.Titulo{
-		font-size: 310%;
+		font-size: 300%;
 		margin-top: 18vh;
 	}
 
 	.Titulo2{
-		font-size: 310%;
-		margin-top: 13vh;
+		font-size: 300%;
+		margin-top: 18vh;
 	}
 	
 	.Texto{
@@ -486,11 +491,10 @@ body{
 	
 	.Menu_lateral{
 		position: fixed;
-		width: 100%;
-		padding-top: 5vh;
-		padding-bottom: 5vh;
+		width: 105%;
+		padding-top: 3vh;
+		padding-bottom: 3vh;
 		margin-top: -2vh;
-		margin-bottom: 2vh;
 		align-content: center;
 		justify-content: center;
 	}
@@ -509,22 +513,23 @@ body{
 	
 	.Contenido{
 		margin: 0 auto;
+		margin-top: 8%;
 		width: 95%;
 	}
 	
 	.Menu{
-		font-size: 90%;
+		font-size: 70%;
 		margin: 0 auto;
 	}
 	
 	.Titulo{
-		font-size: 300%;
+		font-size: 290%;
 		margin-top: 18vh;
 	}
 
 	.Titulo2{
-		font-size: 300%;
-		margin-top: 13vh;
+		font-size: 290%;
+		margin-top: 18vh;
 	}
 	
 	.Texto{
@@ -557,18 +562,17 @@ body{
 	}
 }
 
-@media (max-width: 750px) {
+@media (max-width: 780px) {
 	body{
     	flex-direction: column;
 	}
 	
 	.Menu_lateral{
 		position: fixed;
-		width: 100%;
-		padding-top: 5vh;
-		padding-bottom: 5vh;
+		width: 105%;
+		padding-top: 3vh;
+		padding-bottom: 3vh;
 		margin-top: -2vh;
-		margin-bottom: 2vh;
 		align-content: center;
 		justify-content: center;
 	}
@@ -587,22 +591,23 @@ body{
 	
 	.Contenido{
 		margin: 0 auto;
+		margin-top: 8%;
 		width: 95%;
 	}
 	
 	.Menu{
-		font-size: 80%;
+		font-size: 60%;
 		margin: 0 auto;
 	}
 	
 	.Titulo{
-		font-size: 290%;
+		font-size: 280%;
 		margin-top: 18vh;
 	}
 
 	.Titulo2{
-		font-size: 290%;
-		margin-top: 13vh;
+		font-size: 280%;
+		margin-top: 18vh;
 	}
 	
 	.Texto{
