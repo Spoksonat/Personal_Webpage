@@ -93,13 +93,13 @@ body{
 #ocupacion{
 	font-size: 200%;
 	color: #4E4E50;
-	margin-top:-5vh;
-	margin-bottom: 5vh;
+	margin-top: -1%;
+	margin-bottom: 3%;
 }
 
 .Ocupacion2{
 	font-size: 200%;
-	margin: -0.5vh;
+	margin: 0.01%;
 }
 
 .Iconos{
@@ -108,7 +108,7 @@ body{
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-around;
-	margin-top: 10vh;
+	margin-top: 5%;
 }
 
 .Icono{
