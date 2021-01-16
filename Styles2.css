@@ -336,9 +336,9 @@ body{
 	.Menu_lateral{
 		position: fixed;
 		width: 105%;
-		padding-top: 3vh;
-		padding-bottom: 3vh;
-		margin-top: -2vh;
+		padding-top: 15px;
+		padding-bottom: 15px;
+		margin-top: -9px;
 		align-content: center;
 		justify-content: center;
 	}
@@ -414,9 +414,10 @@ body{
 	.Menu_lateral{
 		position: fixed;
 		width: 105%;
-		padding-top: 3vh;
-		padding-bottom: 3vh;
-		margin-top: -2vh;
+		padding-top: 15px;
+		padding-bottom: 15px;
+		width: 105%;
+		margin-top: -9px;
 		align-content: center;
 		justify-content: center;
 	}
@@ -491,10 +492,10 @@ body{
 	
 	.Menu_lateral{
 		position: fixed;
+		padding-top: 15px;
+		padding-bottom: 15px;
 		width: 105%;
-		padding-top: 3vh;
-		padding-bottom: 3vh;
-		margin-top: -2vh;
+		margin-top: -9px;
 		align-content: center;
 		justify-content: center;
 	}
@@ -569,10 +570,10 @@ body{
 	
 	.Menu_lateral{
 		position: fixed;
+		padding-top: 15px;
+		padding-bottom: 15px;
 		width: 105%;
-		padding-top: 3vh;
-		padding-bottom: 3vh;
-		margin-top: -2vh;
+		margin-top: -9px;
 		align-content: center;
 		justify-content: center;
 	}

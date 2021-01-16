@@ -217,10 +217,10 @@ body{
 	.Menu_lateral{
 		all: initial;
 		position: fixed;
-		padding-top: 3vh;
-		padding-bottom: 3vh;
+		padding-top: 15px;
+		padding-bottom: 15px;
 		width: 105%;
-		margin-top: -2vh;
+		margin-top: -9px;
 		background-color:#1A1A1D;
 		display: flex;
 		flex-direction: column;
@@ -280,10 +280,10 @@ body{
 	.Menu_lateral{
 		all: initial;
 		position: fixed;
-		padding-top: 3vh;
-		padding-bottom: 3vh;
+		padding-top: 15px;
+		padding-bottom: 15px;
 		width: 105%;
-		margin-top: -2vh;
+		margin-top: -9px;
 		background-color:#1A1A1D;
 		display: flex;
 		flex-direction: column;
@@ -344,10 +344,10 @@ body{
 	.Menu_lateral{
 		all: initial;
 		position: fixed;
-		padding-top: 3vh;
-		padding-bottom: 3vh;
+		padding-top: 15px;
+		padding-bottom: 15px;
 		width: 105%;
-		margin-top: -2vh;
+		margin-top: -9px;
 		background-color:#1A1A1D;
 		display: flex;
 		flex-direction: column;
@@ -408,10 +408,10 @@ body{
 	.Menu_lateral{
 		all: initial;
 		position: fixed;
-		padding-top: 3vh;
-		padding-bottom: 3vh;
+		padding-top: 15px;
+		padding-bottom: 15px;
 		width: 105%;
-		margin-top: -2vh;
+		margin-top: -9px;
 		background-color:#1A1A1D;
 		display: flex;
 		flex-direction: column;
