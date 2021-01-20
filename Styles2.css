@@ -44,10 +44,10 @@ body{
 	width: 100%;
 	display: flex;
 	flex-direction: column;
+	margin-top: -485vh;
 	align-items: center;
 	justify-content: center;
-	flex-flow: column-reverse; /*Invierte el orden de los elementos dentro de un contenedor*/
-}
+	flex-flow: column-reverse; /*Invierte el orden de los elementos dentro de un contenedor*/}
 
 .Menu{
 	color: rgba(255,255,255,0.40);
@@ -63,7 +63,7 @@ body{
 .Foto{
 	width: 50%;
 	margin-bottom: 60%;/*20vh;*/
-	margin-top: -510vh;
+	display: none;
 }
 
 .Contenido{
@@ -117,6 +117,17 @@ body{
 
 .Icono:hover{
 	transform: scale(1.1);
+}
+
+
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;} 
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
 }
 
 #manuel{
