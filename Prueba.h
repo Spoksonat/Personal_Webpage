@@ -18,6 +18,13 @@ class Prueba : public AnalyzerBase
   TH1F* plot_PT_b1;
   TH1F* plot_MET;
   TH1F* plot_sdETA_b1b2;
+  TH1F* plot_N_notMerged;
+  TH1F* plot_N_partiallyMerged;
+  TH1F* plot_N_fullyMerged;
+  TH1F* plot_PT_dijet_partially;
+  TH1F* plot_ETA_dijet_partially;
+  TH1F* plot_M_dijet_partially;
+  
 
  public:
   virtual bool Initialize(const MA5::Configuration& cfg, const std::map<std::string,std::string>& parameters);
@@ -38,10 +45,15 @@ class Prueba : public AnalyzerBase
   bool notMerged;
   bool partiallyMerged;
   bool fullyMerged;
-  int index_b;
+  //int index_b;
+  MAuint32 index_b;
   MA5::MALorentzVector dijet;
   MA5::MALorentzVector b_dijet;
   MA5::MALorentzVector reconstructed_W;
+  MA5::MALorentzVector b_used;
+  MA5::MALorentzVector b_not_used;
+  MA5::MALorentzVector leptons_lorentz;
+  MA5::MALorentzVector invisible_lorentz;
 
   MAbool is_lepton_final_state(const MCParticleFormat* part){
      if ( part==0 ) return false;
@@ -67,13 +79,19 @@ class Prueba : public AnalyzerBase
      if ( (part->pdgid()!=-5)&&(part->pdgid()!=5) ) return false;
      return true; }
 
-  void jets_Merge(std::vector<const MCParticleFormat*> j1, std::vector<const MCParticleFormat*> j2, std::vector<const MCParticleFormat*> b, MA5::MALorentzVector &dijet, MA5::MALorentzVector &b_dijet, MA5::MALorentzVector &reconstructed_W){
+  void jets_Merge(std::vector<const MCParticleFormat*> j1, std::vector<const MCParticleFormat*> j2, std::vector<const MCParticleFormat*> b, std::vector<const MCParticleFormat*> leptons, std::vector<const MCParticleFormat*> invisible, MA5::MALorentzVector &dijet, MA5::MALorentzVector &b_dijet, MA5::MALorentzVector &reconstructed_W, MA5::MALorentzVector &b_used, MA5::MALorentzVector &b_not_used, MA5::MALorentzVector &leptons_lorentz, MA5::MALorentzVector &invisible_lorentz){
+
+     dijet = MALorentzVector(); 
+     b_dijet = MALorentzVector(); 
+     reconstructed_W = MALorentzVector(); 
+     b_used = MALorentzVector(); 
+     b_not_used = MALorentzVector();     
 
      const MALorentzVector j1_p = j1[0]->momentum();
      const MALorentzVector j2_p = j2[0]->momentum();
      dijet = j1_p + j2_p;
      Double_t dr_dijet = j1_p.DeltaR(j2_p);
-     //std::cout << dijet.Mag() << std::endl;
+ 
      if (dr_dijet > 0.8)
      {
          notMerged = true;
@@ -110,12 +128,33 @@ class Prueba : public AnalyzerBase
             reconstructed_W = dijet;
             b_dijet = b[index_b]->momentum() + dijet;
          }
+
+          b_used = b[index_b]->momentum();
+
+          for (MAuint32 l=0; l<b.size();l++)
+          {
+              if(l!=index_b)
+              {
+                  b_not_used += b[l]->momentum();
+              }
+          }
+
+          for (MAuint32 n=0; n<leptons.size();n++)
+          {
+              leptons_lorentz += leptons[n]->momentum();
+          }
+  
+          for (MAuint32 m=0; m<invisible.size();m++)
+          {
+              invisible_lorentz += invisible[m]->momentum();
+          }        
    
-     }
 
+    
 
+     } // end of the else
 
-     }
+     } // end of the function jets_Merge
 
 
 };

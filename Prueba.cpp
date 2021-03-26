@@ -59,6 +59,24 @@ bool Prueba::Initialize(const MA5::Configuration& cfg, const std::map<std::strin
   Manager()->AddHisto("sdETA_b1b2", 100, -8.0,8.0); /*Name, bins, x_initial, x_final*/
   plot_sdETA_b1b2 = new TH1F("sdETA_b1b2", "sdETA_b1b2", 100, -8.0,8.0);
 
+  Manager()->AddHisto("N_notMerged", 100, 0.0,2.0); /*Name, bins, x_initial, x_final*/
+  plot_N_notMerged = new TH1F("N_notMerged", "N_notMerged", 100, 0.0,2.0);
+
+  Manager()->AddHisto("N_partiallyMerged", 100, 0.0,2.0); /*Name, bins, x_initial, x_final*/
+  plot_N_partiallyMerged = new TH1F("N_partiallyMerged", "N_partiallyMerged", 100, 0.0,2.0);
+
+  Manager()->AddHisto("N_fullyMerged", 100, 0.0,2.0); /*Name, bins, x_initial, x_final*/
+  plot_N_fullyMerged = new TH1F("N_fullyMerged", "N_fullyMerged", 100, 0.0,2.0);
+
+  Manager()->AddHisto("PT_dijet_partially", 100, 0.0,1000.0); /*Name, bins, x_initial, x_final*/
+  plot_PT_dijet_partially = new TH1F("PT_dijet_partially", "PT_dijet_partially", 100, 0.0, 1000.0);
+
+  Manager()->AddHisto("ETA_dijet_partially", 100, -8.0,8.0); /*Name, bins, x_initial, x_final*/
+  plot_ETA_dijet_partially = new TH1F("ETA_dijet_partially", "ETA_dijet_partially", 100, -8.0,8.0);
+
+  Manager()->AddHisto("M_dijet_partially", 100, 0.0,100.0); /*Name, bins, x_initial, x_final*/
+  plot_M_dijet_partially = new TH1F("M_dijet_partially", "M_dijet_partially", 100, -0.0,100.0);
+
   cout << "END   Initialization" << endl;
   return true;
 }
@@ -78,6 +96,12 @@ void Prueba::Finalize(const SampleFormat& summary, const std::vector<SampleForma
   plot_PT_b1->SetLineStyle(1);
   plot_MET->SetLineStyle(1);
   plot_sdETA_b1b2->SetLineStyle(1);
+  plot_N_notMerged->SetLineStyle(1);
+  plot_N_partiallyMerged->SetLineStyle(1);
+  plot_N_fullyMerged->SetLineStyle(1);
+  plot_PT_dijet_partially->SetLineStyle(1);
+  plot_ETA_dijet_partially->SetLineStyle(1);
+  plot_M_dijet_partially->SetLineStyle(1);
 
   //if (plot_PT_leptons->GetSumw2N() == 0) plot_PT_leptons->Sumw2(kTRUE);
   //plot_PT_leptons->Scale(1.0/plot_PT_leptons->Integral());
@@ -86,6 +110,12 @@ void Prueba::Finalize(const SampleFormat& summary, const std::vector<SampleForma
   plot_PT_b1->Draw("HIST");
   plot_MET->Draw("HIST");
   plot_sdETA_b1b2->Draw("HIST");
+  plot_N_notMerged->Draw("HIST");
+  plot_N_partiallyMerged->Draw("HIST");
+  plot_N_fullyMerged->Draw("HIST");
+  plot_PT_dijet_partially->Draw("HIST");
+  plot_ETA_dijet_partially->Draw("HIST");
+  plot_M_dijet_partially->Draw("HIST");
 
   //c1->SaveAs("PT.png");
   plot_deltaR_b1b2->Write();
@@ -93,6 +123,12 @@ void Prueba::Finalize(const SampleFormat& summary, const std::vector<SampleForma
   plot_PT_b1->Write();
   plot_MET->Write();
   plot_sdETA_b1b2->Write();
+  plot_N_notMerged->Write();
+  plot_N_partiallyMerged->Write();
+  plot_N_fullyMerged->Write();
+  plot_PT_dijet_partially->Write();
+  plot_ETA_dijet_partially->Write();
+  plot_M_dijet_partially->Write();
   Output->Close();
   cout << "END   Finalization" << endl;
 }
@@ -240,13 +276,45 @@ bool Prueba::Execute(SampleFormat& sample, const EventFormat& event)
      Manager()->FillHisto("MET", PHYSICS->Transverse->EventMET(event.mc()));
      plot_MET->Fill(PHYSICS->Transverse->EventMET(event.mc()));
 
-     jets_Merge(j1_final_state_array, j2_final_state_array, b_final_state_array, dijet, b_dijet, reconstructed_W);
+     jets_Merge(j1_final_state_array, j2_final_state_array, b_final_state_array, lepton_final_state_array, neutrino_final_state_array, dijet, b_dijet, reconstructed_W, b_used, b_not_used, leptons_lorentz, invisible_lorentz);
 
      //cout << "notMerged =" << notMerged << ", partiallyMerged = " << partiallyMerged << ", fullyMerged = " << fullyMerged << endl; 
 
      //cout << "indice = " << index_b << endl;
 
-     cout << reconstructed_W.Mag() << endl;
+     //cout << invisible_lorentz.Eta() << endl;
+
+      if(notMerged)
+      {
+         // Fill number of not Merged events histogram
+         Manager()->FillHisto("N_notMerged", notMerged);
+         plot_N_notMerged->Fill(notMerged);
+      }
+
+      if(partiallyMerged)
+      {
+         // Fill number of partially Merged events histogram
+         Manager()->FillHisto("N_partiallyMerged", partiallyMerged);
+         plot_N_partiallyMerged->Fill(partiallyMerged);
+
+         Manager()->FillHisto("PT_dijet_partially", reconstructed_W.Pt());
+         plot_PT_dijet_partially->Fill(reconstructed_W.Pt());
+
+         Manager()->FillHisto("ETA_dijet_partially", reconstructed_W.Eta());
+         plot_ETA_dijet_partially->Fill(reconstructed_W.Eta());
+
+         Manager()->FillHisto("M_dijet_partially", reconstructed_W.M());
+         plot_M_dijet_partially->Fill(reconstructed_W.M());
+      }
+
+
+      if(fullyMerged)
+      {
+         // Fill number of fully Merged events histogram
+         Manager()->FillHisto("N_fullyMerged", fullyMerged);
+         plot_N_fullyMerged->Fill(fullyMerged);
+      }
+      
      
 
   return true;
