@@ -1,4 +1,5 @@
 #include "SampleAnalyzer/User/Analyzer/Prueba.h"
+#include "SampleAnalyzer/Interfaces/root/RootMainHeaders.h"
 #include <TFile.h>
 #include <TCanvas.h>
 #include <vector>
@@ -112,15 +113,14 @@ bool Prueba::Execute(SampleFormat& sample, const EventFormat& event)
   
       lepton_final_state_array.clear(); //clear the vectors that contain leptons, neutrinos, j and b in each iteration over all the events
       neutrino_final_state_array.clear();
-      j_final_state_array.clear();
+      j_final_state_array.clear(); // These jets are non-bquark jets
       b_final_state_array.clear();
-      j1_final_state_array.clear();
-      j2_final_state_array.clear();
+      j1_final_state_array.clear(); // These jets are non-bquark jets
+      j2_final_state_array.clear(); // These jets are non-bquark jets
       b1_final_state_array.clear();
       b2_final_state_array.clear();
       b3_final_state_array.clear();
       b4_final_state_array.clear();
-
   
 
   
@@ -239,8 +239,15 @@ bool Prueba::Execute(SampleFormat& sample, const EventFormat& event)
    
      Manager()->FillHisto("MET", PHYSICS->Transverse->EventMET(event.mc()));
      plot_MET->Fill(PHYSICS->Transverse->EventMET(event.mc()));
-   
 
+     jets_Merge(j1_final_state_array, j2_final_state_array, b_final_state_array, dijet, b_dijet, reconstructed_W);
+
+     //cout << "notMerged =" << notMerged << ", partiallyMerged = " << partiallyMerged << ", fullyMerged = " << fullyMerged << endl; 
+
+     //cout << "indice = " << index_b << endl;
+
+     cout << reconstructed_W.Mag() << endl;
+     
 
   return true;
 }
