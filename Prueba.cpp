@@ -50,6 +50,9 @@ bool Prueba::Initialize(const MA5::Configuration& cfg, const std::map<std::strin
   Manager()->AddHisto("PT_leptons", 100, 0.0,1000.0); /*Name, bins, x_initial, x_final*/
   plot_PT_leptons = new TH1F("PT_leptons", "PT_leptons", 100, 0.0, 1000.0);
 
+  Manager()->AddHisto("ETA_leptons", 100, -8.0,8.0); /*Name, bins, x_initial, x_final*/
+  plot_ETA_leptons = new TH1F("ETA_leptons", "ETA_leptons", 100, -8.0, 8.0);
+
   Manager()->AddHisto("PT_b1", 100, 0.0,1000.0); /*Name, bins, x_initial, x_final*/
   plot_PT_b1 = new TH1F("PT_b1", "PT_b1", 100, 0.0, 1000.0);
 
@@ -58,6 +61,9 @@ bool Prueba::Initialize(const MA5::Configuration& cfg, const std::map<std::strin
 
   Manager()->AddHisto("sdETA_b1b2", 100, -8.0,8.0); /*Name, bins, x_initial, x_final*/
   plot_sdETA_b1b2 = new TH1F("sdETA_b1b2", "sdETA_b1b2", 100, -8.0,8.0);
+
+  Manager()->AddHisto("N_Merged", 3, 0.0,4.0); /*Name, bins, x_initial, x_final*/
+  plot_N_Merged = new TH1F("N_Merged", "N_Merged", 3, 0.0,4.0);
 
   Manager()->AddHisto("N_notMerged", 100, 0.0,2.0); /*Name, bins, x_initial, x_final*/
   plot_N_notMerged = new TH1F("N_notMerged", "N_notMerged", 100, 0.0,2.0);
@@ -77,6 +83,35 @@ bool Prueba::Initialize(const MA5::Configuration& cfg, const std::map<std::strin
   Manager()->AddHisto("M_dijet_partially", 100, 0.0,100.0); /*Name, bins, x_initial, x_final*/
   plot_M_dijet_partially = new TH1F("M_dijet_partially", "M_dijet_partially", 100, -0.0,100.0);
 
+  Manager()->AddHisto("PT_b_dijet_partially", 100, 0.0,1000.0); /*Name, bins, x_initial, x_final*/
+  plot_PT_b_dijet_partially = new TH1F("PT_b_dijet_partially", "PT_dijet_partially", 100, 0.0, 1000.0);
+
+  Manager()->AddHisto("ETA_b_dijet_partially", 100, -8.0,8.0); /*Name, bins, x_initial, x_final*/
+  plot_ETA_b_dijet_partially = new TH1F("ETA_b_dijet_partially", "ETA_b_dijet_partially", 100, -8.0,8.0);
+
+  Manager()->AddHisto("M_b_dijet_partially", 100, 100.0,200.0); /*Name, bins, x_initial, x_final*/
+  plot_M_b_dijet_partially = new TH1F("M_b_dijet_partially", "M_b_dijet_partially", 100, 100.0,200.0);
+
+  Manager()->AddHisto("PT_b_dijet_fully", 100, 0.0,1000.0); /*Name, bins, x_initial, x_final*/
+  plot_PT_b_dijet_fully = new TH1F("PT_b_dijet_fully", "PT_b_dijet_fully", 100, 0.0, 1000.0);
+
+  Manager()->AddHisto("ETA_b_dijet_fully", 100, -8.0,8.0); /*Name, bins, x_initial, x_final*/
+  plot_ETA_b_dijet_fully = new TH1F("ETA_b_dijet_fully", "ETA_b_dijet_fully", 100, -8.0,8.0);
+
+  Manager()->AddHisto("M_b_dijet_fully", 100, 100.0,200.0); /*Name, bins, x_initial, x_final*/
+  plot_M_b_dijet_fully = new TH1F("M_b_dijet_fully", "M_b_dijet_fully", 100, 100.0,200.0);
+
+  Manager()->AddHisto("PT_b_not_used", 100, 0.0,1000.0); /*Name, bins, x_initial, x_final*/
+  plot_PT_b_not_used = new TH1F("PT_b_not_used", "PT_b_not_used", 100, 0.0, 1000.0);
+
+  Manager()->AddHisto("ETA_b_not_used", 100, -8.0,8.0); /*Name, bins, x_initial, x_final*/
+  plot_ETA_b_not_used = new TH1F("ETA_b_not_used", "ETA_b_not_used", 100, -8.0,8.0);
+
+  Manager()->AddHisto("sdPHI_lMET", 100, -8.0,8.0); /*Name, bins, x_initial, x_final*/
+  plot_sdPHI_lMET = new TH1F("sdPHI_lMET", "sdPHI_lMET", 100, -8.0,8.0);
+
+  
+
   cout << "END   Initialization" << endl;
   return true;
 }
@@ -93,42 +128,85 @@ void Prueba::Finalize(const SampleFormat& summary, const std::vector<SampleForma
   TFile* Output = new TFile("output.root", "RECREATE");
   plot_deltaR_b1b2->SetLineStyle(1);
   plot_PT_leptons->SetLineStyle(1);
+  plot_ETA_leptons->SetLineStyle(1);
   plot_PT_b1->SetLineStyle(1);
   plot_MET->SetLineStyle(1);
   plot_sdETA_b1b2->SetLineStyle(1);
+  plot_N_Merged->SetLineStyle(1);
   plot_N_notMerged->SetLineStyle(1);
   plot_N_partiallyMerged->SetLineStyle(1);
   plot_N_fullyMerged->SetLineStyle(1);
   plot_PT_dijet_partially->SetLineStyle(1);
   plot_ETA_dijet_partially->SetLineStyle(1);
   plot_M_dijet_partially->SetLineStyle(1);
+  plot_PT_b_dijet_partially->SetLineStyle(1);
+  plot_ETA_b_dijet_partially->SetLineStyle(1);
+  plot_M_b_dijet_partially->SetLineStyle(1);
+  plot_PT_b_dijet_fully->SetLineStyle(1);
+  plot_ETA_b_dijet_fully->SetLineStyle(1);
+  plot_M_b_dijet_fully->SetLineStyle(1);
+  plot_PT_b_not_used->SetLineStyle(1);
+  plot_ETA_b_not_used->SetLineStyle(1);
+  plot_sdPHI_lMET->SetLineStyle(1);
 
-  //if (plot_PT_leptons->GetSumw2N() == 0) plot_PT_leptons->Sumw2(kTRUE);
-  //plot_PT_leptons->Scale(1.0/plot_PT_leptons->Integral());
+
   plot_deltaR_b1b2->Draw("HIST");
   plot_PT_leptons->Draw("HIST");
+  plot_ETA_leptons->Draw("HIST");
   plot_PT_b1->Draw("HIST");
   plot_MET->Draw("HIST");
   plot_sdETA_b1b2->Draw("HIST");
+  
+  //TCanvas *c2 = new TCanvas();
+  //if (plot_PT_leptons->GetSumw2N() == 0) plot_PT_leptons->Sumw2(kTRUE);
+  //plot_N_Merged->Scale(1.0/plot_N_Merged->Integral());
+  TAxis* a = plot_N_Merged->GetXaxis();
+  a->SetBit(TAxis::kLabelsHori); 
+  a->SetBinLabel(1,"noMerged"); 
+  a->SetBinLabel(2,"partiallyMerged"); 
+  a->SetBinLabel(3,"fullyMerged");
+  plot_N_Merged->Draw("HIST");
+  //c2->SaveAs("N_merged.png");
+  
   plot_N_notMerged->Draw("HIST");
   plot_N_partiallyMerged->Draw("HIST");
   plot_N_fullyMerged->Draw("HIST");
   plot_PT_dijet_partially->Draw("HIST");
   plot_ETA_dijet_partially->Draw("HIST");
   plot_M_dijet_partially->Draw("HIST");
+  plot_PT_b_dijet_partially->Draw("HIST");
+  plot_ETA_b_dijet_partially->Draw("HIST");
+  plot_M_b_dijet_partially->Draw("HIST");
+  plot_PT_b_dijet_fully->Draw("HIST");
+  plot_ETA_b_dijet_fully->Draw("HIST");
+  plot_M_b_dijet_fully->Draw("HIST");
+  plot_PT_b_not_used->Draw("HIST");
+  plot_ETA_b_not_used->Draw("HIST");
+  plot_sdPHI_lMET->Draw("HIST");
 
-  //c1->SaveAs("PT.png");
+  
   plot_deltaR_b1b2->Write();
   plot_PT_leptons->Write();
+  plot_ETA_leptons->Write();
   plot_PT_b1->Write();
   plot_MET->Write();
   plot_sdETA_b1b2->Write();
+  plot_N_Merged->Write();
   plot_N_notMerged->Write();
   plot_N_partiallyMerged->Write();
   plot_N_fullyMerged->Write();
   plot_PT_dijet_partially->Write();
   plot_ETA_dijet_partially->Write();
   plot_M_dijet_partially->Write();
+  plot_PT_b_dijet_partially->Write();
+  plot_ETA_b_dijet_partially->Write();
+  plot_M_b_dijet_partially->Write();
+  plot_PT_b_dijet_fully->Write();
+  plot_ETA_b_dijet_fully->Write();
+  plot_M_b_dijet_fully->Write();
+  plot_PT_b_not_used->Write();
+  plot_ETA_b_not_used->Write();
+  plot_sdPHI_lMET->Write();
   Output->Close();
   cout << "END   Finalization" << endl;
 }
@@ -220,6 +298,16 @@ bool Prueba::Execute(SampleFormat& sample, const EventFormat& event)
       plot_PT_leptons->Fill(lepton_final_state_array[j]->pt());
     }
 
+
+  // Lepton ETA Histogram
+
+
+    for (MAuint32 j=0;j<lepton_final_state_array.size();j++)
+    {
+      Manager()->FillHisto("ETA_leptons", lepton_final_state_array[j]->eta());
+      plot_ETA_leptons->Fill(lepton_final_state_array[j]->eta());
+    } 
+
  
 
   // Bottom 1 pt Histogram
@@ -276,6 +364,8 @@ bool Prueba::Execute(SampleFormat& sample, const EventFormat& event)
      Manager()->FillHisto("MET", PHYSICS->Transverse->EventMET(event.mc()));
      plot_MET->Fill(PHYSICS->Transverse->EventMET(event.mc()));
 
+    // Here begins the top reconstruction part
+
      jets_Merge(j1_final_state_array, j2_final_state_array, b_final_state_array, lepton_final_state_array, neutrino_final_state_array, dijet, b_dijet, reconstructed_W, b_used, b_not_used, leptons_lorentz, invisible_lorentz);
 
      //cout << "notMerged =" << notMerged << ", partiallyMerged = " << partiallyMerged << ", fullyMerged = " << fullyMerged << endl; 
@@ -284,11 +374,17 @@ bool Prueba::Execute(SampleFormat& sample, const EventFormat& event)
 
      //cout << invisible_lorentz.Eta() << endl;
 
+      // Number of total events divide in notMerged, partiallyMerged and fullyMerged
+
+
       if(notMerged)
       {
          // Fill number of not Merged events histogram
          Manager()->FillHisto("N_notMerged", notMerged);
          plot_N_notMerged->Fill(notMerged);
+
+         Manager()->FillHisto("N_Merged", 1);
+         plot_N_Merged->Fill(1);
       }
 
       if(partiallyMerged)
@@ -305,6 +401,18 @@ bool Prueba::Execute(SampleFormat& sample, const EventFormat& event)
 
          Manager()->FillHisto("M_dijet_partially", reconstructed_W.M());
          plot_M_dijet_partially->Fill(reconstructed_W.M());
+
+         Manager()->FillHisto("PT_b_dijet_partially", b_dijet.Pt());
+         plot_PT_b_dijet_partially->Fill(b_dijet.Pt());
+
+         Manager()->FillHisto("ETA_b_dijet_partially", b_dijet.Eta());
+         plot_ETA_b_dijet_partially->Fill(b_dijet.Eta());
+
+         Manager()->FillHisto("M_b_dijet_partially", b_dijet.M());
+         plot_M_b_dijet_partially->Fill(b_dijet.M());
+
+         Manager()->FillHisto("N_Merged", 2);
+         plot_N_Merged->Fill(2);
       }
 
 
@@ -313,8 +421,76 @@ bool Prueba::Execute(SampleFormat& sample, const EventFormat& event)
          // Fill number of fully Merged events histogram
          Manager()->FillHisto("N_fullyMerged", fullyMerged);
          plot_N_fullyMerged->Fill(fullyMerged);
+
+         Manager()->FillHisto("PT_b_dijet_fully", b_dijet.Pt());
+         plot_PT_b_dijet_fully->Fill(b_dijet.Pt());
+
+         Manager()->FillHisto("ETA_b_dijet_fully", b_dijet.Eta());
+         plot_ETA_b_dijet_fully->Fill(b_dijet.Eta());
+
+         Manager()->FillHisto("M_b_dijet_fully", b_dijet.M());
+         plot_M_b_dijet_fully->Fill(b_dijet.M());
+
+         Manager()->FillHisto("N_Merged", 3);
+         plot_N_Merged->Fill(3);
       }
-      
+
+      if(!notMerged)
+      {
+         // PT b-quark not used in the top reconstruction
+   
+         Manager()->FillHisto("PT_b_not_used", b_not_used.Pt());
+         plot_PT_b_not_used->Fill(b_not_used.Pt());
+
+         // ETA b-quark not used in the top reconstruction
+   
+         Manager()->FillHisto("ETA_b_not_used", b_not_used.Eta());
+         plot_ETA_b_not_used->Fill(b_not_used.Eta());
+      }
+
+
+
+     // Delta phi (lepton, MET=neutrinos) Histogram
+
+    vector<set<const MCParticleFormat*> > combinations_lMET; // We create a vector with all the combinations that we can do with lepton, MET=neutrinos
+
+    MAuint32 index_lMET[2];
+    for (index_lMET[0]=0;index_lMET[0]<lepton_final_state_array.size();index_lMET[0]++) // We go through lepton, MET=neutrinos in order to join them
+    {
+    for (index_lMET[1]=0;index_lMET[1]<neutrino_final_state_array.size();index_lMET[1]++)
+    {
+        if (neutrino_final_state_array[index_lMET[1]]==lepton_final_state_array[index_lMET[0]]) continue; // We exclude the cases when the two are the same
+
+       
+        set<const MCParticleFormat*> combination_lMET; // We create a particular combination of lepton, MET=neutrinos
+        for (MAuint32 i=0;i<2;i++)
+        {
+          combination_lMET.insert(lepton_final_state_array[index_lMET[i]]); // Joining lepton, MET=neutrinos
+          combination_lMET.insert(neutrino_final_state_array[index_lMET[i]]);
+        }
+
+        MAbool matched_lMET=false;
+
+        for (MAuint32 i=0;i<combinations_lMET.size();i++)
+        {
+          if (combinations_lMET[i]==combination_lMET) // Checking if the particular combination is already inside of the vector of all combinations
+          {    
+            matched_lMET=true; 
+            break;
+          } 
+        }
+
+        if (matched_lMET) continue; // If the particular combination is already inside of the vector of all the combinations, then we continue
+        else combinations_lMET.push_back(combination_lMET); // Else, we add this particular combination in the vector
+
+        MAdouble64 sdphi=0; // We declare the variable that will contain the value of sdPHI
+        sdphi+=lepton_final_state_array[index_lMET[0]]->phi();
+        sdphi-=neutrino_final_state_array[index_lMET[1]]->phi();
+        Manager()->FillHisto("sdPHI_lMET", sdphi);
+        plot_sdPHI_lMET->Fill(sdphi);
+    }
+    }
+
      
 
   return true;

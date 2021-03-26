@@ -15,15 +15,26 @@ class Prueba : public AnalyzerBase
 
   TH1F* plot_deltaR_b1b2;
   TH1F* plot_PT_leptons;
+  TH1F* plot_ETA_leptons;
   TH1F* plot_PT_b1;
   TH1F* plot_MET;
   TH1F* plot_sdETA_b1b2;
+  TH1F* plot_N_Merged;
   TH1F* plot_N_notMerged;
   TH1F* plot_N_partiallyMerged;
   TH1F* plot_N_fullyMerged;
   TH1F* plot_PT_dijet_partially;
   TH1F* plot_ETA_dijet_partially;
   TH1F* plot_M_dijet_partially;
+  TH1F* plot_PT_b_dijet_partially;
+  TH1F* plot_ETA_b_dijet_partially;
+  TH1F* plot_M_b_dijet_partially;
+  TH1F* plot_PT_b_dijet_fully;
+  TH1F* plot_ETA_b_dijet_fully;
+  TH1F* plot_M_b_dijet_fully;
+  TH1F* plot_PT_b_not_used;
+  TH1F* plot_ETA_b_not_used;
+  TH1F* plot_sdPHI_lMET;
   
 
  public:
